@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Post } from '../common/post.interface';
 import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { PostsService } from '../common/posts-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-post-details',
@@ -10,7 +11,11 @@ import { PostsService } from '../common/posts-service';
   styleUrl: './post-details.css',
 })
 export class PostDetails {
-  constructor(private route: ActivatedRoute, private postsService: PostsService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private postsService: PostsService,
+    private toastr: ToastrService
+  ) {}
 
   loading = false;
   post: Post | null = null;
@@ -20,7 +25,7 @@ export class PostDetails {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = Number(params.get('id'));
       if (!id) {
-        alert('Identifiant invalide.');
+        this.toastr.error('Identifiant invalide.');
         this.post = null;
         return;
       }
@@ -37,7 +42,7 @@ export class PostDetails {
         this.loading = false;
       },
       error: () => {
-        alert('Impossible de charger le post.');
+        this.toastr.error('Impossible de charger le post.');
         this.loading = false;
       },
     });
