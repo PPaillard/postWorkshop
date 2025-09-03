@@ -8,6 +8,7 @@
     </div>
   }
 
+  <a [routerLink]="'posts/create'" class="btn btn-sm btn-secondary m-3">Création</a>
   <!-- Liste des posts -->
   <div class="row">
     @for (post of posts; track post.id) {
