@@ -24,4 +24,15 @@ export class ArticleList {
       },
     });
   }
+
+  /* 
+  Pour supprimer : 
+  Appelle d'une fonction avec l'identifiant de l'article.
+  Confirmation de l'utilisateur?
+    Si oui : 
+      On appelle la fonction supprimer dans le service
+      On averti l'utilisateur de la réalisation de l'opération
+    Si non :
+      RIEN 
+  */
 }

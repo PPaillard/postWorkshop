@@ -1,10 +1,12 @@
 <div class="container mt-4">
-  <h2 class="mb-4">Création d'un article</h2>
+  <h2 class="mb-4">
+    {{ isEditing ? "Modification d'un article" : "Création d'un article" }}
+  </h2>
   <form
     class="row g-3"
     #articleForm="ngForm"
     novalidate
-    (ngSubmit)="articleForm.valid && createArticle()"
+    (ngSubmit)="articleForm.valid && onSubmit()"
   >
     <div class="col">
       <label for="title" class="form-label">Titre</label>
@@ -53,7 +55,10 @@
       }
     </div>
     <div class="col-12">
-      <button class="btn btn-primary" type="submit">Créer</button>
+      <button class="btn btn-primary m-1" type="submit">
+        {{ isEditing ? 'Modifier' : 'Créer' }}
+      </button>
+      <a [routerLink]="['/']" class="btn btn-secondary m-1">Annuler</a>
     </div>
   </form>
 </div>
