@@ -27,12 +27,25 @@ export class ArticleList {
 
   /* 
   Pour supprimer : 
-  Appelle d'une fonction avec l'identifiant de l'article.
-  Confirmation de l'utilisateur?
+  -Appelle d'une fonction avec l'identifiant de l'article.
+  -Confirmation de l'utilisateur?
     Si oui : 
-      On appelle la fonction supprimer dans le service
-      On averti l'utilisateur de la réalisation de l'opération
+      -On appelle la fonction supprimer dans le service
+      -On averti l'utilisateur de la réalisation de l'opération
     Si non :
       RIEN 
   */
+
+  deleteArticle(id: number): void {
+    if (confirm('Confirmez vous la suppression?')) {
+      this.articlesService.deleteArticle(id).subscribe({
+        next: () => {
+          this.toastr.success('La suppression a été effectué');
+        },
+        error: () => {
+          this.toastr.error("Erreur durant la suppression de l'article.");
+        },
+      });
+    }
+  }
 }

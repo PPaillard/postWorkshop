@@ -23,7 +23,7 @@
           <a [routerLink]="['/articles', article.id, 'edit']" class="btn btn-sm btn-secondary m-1"
             >Modifier</a
           >
-          <a class="btn btn-sm btn-danger m-1">Supprimer</a>
+          <a (click)="deleteArticle(article.id!)" class="btn btn-sm btn-danger m-1">Supprimer</a>
         </div>
       </div>
     </div>
