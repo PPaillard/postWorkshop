@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "postWorkshop": {
+    "articleWorkshop": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -52,10 +52,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "postWorkshop:build:production"
+              "buildTarget": "articleWorkshop:build:production"
             },
             "development": {
-              "buildTarget": "postWorkshop:build:development"
+              "buildTarget": "articleWorkshop:build:development"
             }
           },
           "defaultConfiguration": "development"

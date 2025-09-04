@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { PostDetails } from './post-details/post-details';
-import { PostList } from './post-list/post-list';
-import { PostCreate } from './post-create/post-create';
+import { ArticleDetails } from './article-details/article-details';
+import { ArticleList } from './article-list/article-list';
+import { ArticleCreate } from './article-create/article-create';
 
 export const routes: Routes = [
-  { path: '', component: PostList },
-  { path: 'posts/create', component: PostCreate },
-  { path: 'posts/:id', component: PostDetails },
+  { path: '', component: ArticleList },
+  { path: 'articles/create', component: ArticleCreate },
+  { path: 'articles/:id', component: ArticleDetails },
   { path: '**', redirectTo: '' },
 ];

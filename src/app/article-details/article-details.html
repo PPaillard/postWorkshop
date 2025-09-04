@@ -1,0 +1,23 @@
+<div class="container my-4">
+  <a routerLink="" class="btn btn-link p-0 mb-3">&larr; Retour</a>
+
+  @if (loading) {
+  <div class="d-flex justify-content-center my-5">
+    <div class="spinner-border" role="status" aria-label="Chargement"></div>
+  </div>
+  } @if (article && !loading) {
+  <div class="card shadow-sm">
+    <div class="card-header bg-white">
+      <span class="badge bg-primary me-2">#{{ article.id }}</span>
+      <strong>Article</strong>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title text-primary">{{ article.title }}</h5>
+      <p class="card-text mb-0">{{ article.body }}</p>
+    </div>
+    <div class="card-footer text-muted small">
+      @if (article.userId) { Écrit par l’utilisateur {{ article.userId }} }
+    </div>
+  </div>
+  }
+</div>
