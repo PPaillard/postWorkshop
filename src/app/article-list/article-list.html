@@ -11,7 +11,7 @@
   <a [routerLink]="'articles/create'" class="btn btn-sm btn-secondary m-1">Création</a>
   <!-- Liste des articles -->
   <div class="row">
-    @for (article of articles; track article.id) {
+    @for (article of articles; track article.id) { @if(!deletedArticles.includes(article.id!)){
     <div class="col-md-6 mb-4">
       <div class="card h-100 shadow-sm">
         <div class="card-body">
@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-    } @empty {
+    } } @empty {
     <p class="text-muted">Aucun article à afficher</p>
     }
   </div>

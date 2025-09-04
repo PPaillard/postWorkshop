@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 export class ArticleList {
   articles!: Article[];
   errorMessage = '';
+  // tableau contenant les identifiants des articles supprimés
+  deletedArticles: number[] = [];
 
   constructor(private articlesService: ArticlesService, private toastr: ToastrService) {}
 
@@ -40,6 +42,8 @@ export class ArticleList {
     if (confirm('Confirmez vous la suppression?')) {
       this.articlesService.deleteArticle(id).subscribe({
         next: () => {
+          // On ajoute l'identifiant de larticle à la liste des articles supprimés
+          this.deletedArticles.push(id);
           this.toastr.success('La suppression a été effectué');
         },
         error: () => {
