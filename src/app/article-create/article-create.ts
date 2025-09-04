@@ -24,6 +24,15 @@ export class ArticleCreate {
     private routeur: Router
   ) {}
 
+  /*
+    On doit créé une route /articles/:id/edit
+    A l'initialisation du composant ArticleCreate, on va recupérer l'ID dans l'URL
+    Grace à l'identifiant, on va récupérer l'article via le service
+    on nourri l'article de notre composant, grace à l'article qu'on reçoit du service
+    Dans la fonction qui enregistre (createArticle, peut être à renommer?), si l'identifiant est absent, j'appelle la création d'article.
+    S'il est présent, j'appelle la modification d'article.
+  */
+
   createArticle(): void {
     this.articleService.createArticle(this.article).subscribe({
       next: () => {
