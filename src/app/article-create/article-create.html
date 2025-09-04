@@ -1,4 +1,59 @@
 <div class="container mt-4">
   <h2 class="mb-4">Création d'un article</h2>
-    
-  </div>
+  <form
+    class="row g-3"
+    #articleForm="ngForm"
+    novalidate
+    (ngSubmit)="articleForm.valid && createArticle()"
+  >
+    <div class="col">
+      <label for="title" class="form-label">Titre</label>
+      <input
+        [(ngModel)]="article.title"
+        type="text"
+        class="form-control"
+        id="title"
+        #titleCtrl="ngModel"
+        name="title"
+        required
+      />
+      @if(titleCtrl.errors && (titleCtrl.touched || articleForm.submitted)) {
+      <div class="alert alert-danger">Le titre est requis</div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="body" class="form-label">Contenu de l'article</label>
+      <textarea
+        [(ngModel)]="article.body"
+        class="form-control"
+        id="body"
+        placeholder="Contenu de l'article"
+        name="body"
+        #bodyCtrl="ngModel"
+        required
+      ></textarea>
+      @if(bodyCtrl.errors && (bodyCtrl.touched || articleForm.submitted)) {
+      <div class="alert alert-danger">Le contenu est requis</div>
+      }
+    </div>
+    <div class="col">
+      <label for="userId" class="form-label">Identifiant utilisateur</label>
+      <input
+        [(ngModel)]="article.userId"
+        type="number"
+        class="form-control"
+        id="userId"
+        name="userId"
+        required
+        [min]="1"
+        #userIdCtrl="ngModel"
+      />
+      @if(userIdCtrl.errors && (userIdCtrl.touched || articleForm.submitted)) {
+      <div class="alert alert-danger">L'identifiant utilisateur est requis</div>
+      }
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Créer</button>
+    </div>
+  </form>
+</div>
